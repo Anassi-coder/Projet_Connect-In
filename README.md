@@ -10,7 +10,7 @@ Connect'In est une plateforme de réseau social moderne permettant aux utilisate
 
 | Page d'accueil | Fil d'actualité |
 |:-:|:-:|
-| ![Page d'accueil](frontend/assets/connect.png) | ![Fil d'actualité](frontend/assets/user.png) |
+| ![Page d'accueil](frontend/assets/connects.png) | ![Fil d'actualité](frontend/assets/user.png) |
 
 ## Architecture Technique
 
