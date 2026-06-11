@@ -2,6 +2,16 @@
 
 Connect'In est une plateforme de réseau social moderne permettant aux utilisateurs de partager des publications, d'interagir via des commentaires et des mentions "J'aime", et de gérer leur profil personnel. Le projet est entièrement conteneurisé avec Docker pour garantir un environnement de développement identique pour tous les collaborateurs.
 
+## Auteur
+
+- Anassi - [@Anassi-coder](https://github.com/Anassi-coder)
+
+## Aperçu du projet
+
+| Page d'accueil | Fil d'actualité |
+|:-:|:-:|
+| ![Page d'accueil](frontend/assets/connect.png) | ![Fil d'actualité](frontend/assets/user.png) |
+
 ## Architecture Technique
 
 Le projet repose sur une architecture découplée pour séparer les responsabilités :
