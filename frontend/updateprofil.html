@@ -1,0 +1,257 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="src/css/output.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Questrial&display=swap"
+      rel="stylesheet"
+    />
+    <title>Gérer mon profil</title>
+  </head>
+
+  <body class="bg-white font-['Questrial',sans-serif] min-h-screen">
+    <div
+      id="mobile-overlay"
+      class="fixed inset-0 bg-black/50 z-40 hidden lg:hidden"
+    ></div>
+
+    <header
+      class="sticky top-0 z-50 bg-[#0f172a]/90 backdrop-blur-md border-b border-white/10 px-4 md:px-6 py-4"
+    >
+      <div class="max-w-7xl mx-auto flex justify-between items-center gap-4">
+        <div class="flex items-center gap-2">
+          <button
+            id="burger-menu"
+            class="lg:hidden text-[#E2F167] text-2xl p-2"
+          >
+            <i class="fa-solid fa-bars"></i>
+          </button>
+          <a
+            href="#"
+            class="text-xl md:text-2xl font-bold tracking-tighter text-[#E2F167] whitespace-nowrap mx-13"
+            >CONNECT'IN</a
+          >
+        </div>
+
+        <!-- <div class="relative flex-1 max-w-md hidden sm:block">
+          <i
+            class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-white/40"
+          ></i>
+          <input
+            type="text"
+            placeholder="Rechercher un post..."
+            class="w-full bg-white/5 border border-white/10 text-white rounded-full py-2 pl-12 pr-4 focus:outline-none focus:border-[#E2F167] transition"
+          />
+        </div> -->
+
+        <div class="flex items-center gap-2 sm:gap-4">
+          <button
+            id="search-toggle"
+            class="sm:hidden text-white/70 p-2 text-xl"
+          >
+            <i class="fa-solid fa-magnifying-glass"></i>
+          </button>
+          <a
+            href="#"
+            class="w-10 h-10 rounded-full bg-[#E2F167] text-slate-900 flex items-center justify-center font-bold"
+            >JD</a
+          >
+        </div>
+      </div>
+
+      <div
+        id="mobile-search-bar"
+        class="hidden sm:hidden mt-4 pb-2 transition-all"
+      >
+        <div class="relative">
+          <i
+            class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-white/40"
+          ></i>
+          <input
+            type="text"
+            placeholder="Rechercher..."
+            class="w-full bg-white/10 border border-white/20 text-white rounded-full py-3 pl-12 pr-4 focus:outline-none focus:border-[#E2F167]"
+          />
+        </div>
+      </div>
+    </header>
+
+    <main
+      class="max-w-7xl mx-auto px-4 py-8 flex flex-col lg:flex-row gap-6 lg:gap-10"
+    >
+      <aside
+        id="sidebar"
+        class="fixed lg:sticky top-0 lg:top-28 left-0 h-full lg:h-fit w-72 lg:w-64 bg-white lg:bg-transparent z-50 lg:z-0 p-6 lg:p-0 transform -translate-x-full lg:translate-x-0 transition-transform duration-300 ease-in-out shadow-2xl lg:shadow-none overflow-y-auto"
+      >
+        <div class="flex justify-between items-center lg:hidden mb-8">
+          <span class="font-bold text-xl">Menu</span>
+          <button id="close-menu" class="text-2xl text-black">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+
+        <div class="flex flex-col gap-6">
+          <div
+            class="border border-white/10 lg:border-white/10 rounded-3xl p-4 flex flex-col gap-1"
+          >
+            <a
+              href="accueil.html"
+              class="text-black flex items-center gap-3 p-3 rounded-xl hover:bg-black/5 font-medium"
+              ><i class="fa-solid fa-house w-6"></i> Accueil</a
+            >
+            <a
+              href="#"
+              class="text-black flex items-center gap-3 p-3 rounded-xl hover:bg-black/5 font-medium"
+              ><i class="fa-solid fa-user w-6"></i> Profil</a
+            >
+            <!-- <a
+              href="#"
+              class="text-black flex items-center gap-3 p-3 rounded-xl hover:bg-black/5 font-medium"
+              ><i class="fa-solid fa-bell w-6"></i> Notifications</a
+            > -->
+            <a
+              href="#"
+              class="text-black flex items-center gap-3 p-3 rounded-xl hover:bg-black/5 font-medium"
+              ><i class="fa-solid fa-gear w-6"></i> Gérer mon compte</a
+            >
+            <a
+              href="#"
+              class="mt-4 bg-black text-white text-center font-bold py-3 rounded-xl hover:scale-105 transition-all"
+              >Poster</a
+            >
+          </div>
+
+          <div
+            class="border border-white/10 lg:border-white/10 rounded-3xl p-4 flex flex-col gap-1"
+          >
+            <a
+              href="#"
+              class="text-black flex items-center gap-3 p-3 rounded-xl hover:bg-black/5 font-medium"
+              ><i class="fa-solid fa-users w-6"></i> Groupes</a
+            >
+            <a
+              href="#"
+              class="text-black flex items-center gap-3 p-3 rounded-xl hover:bg-black/5 font-medium"
+              ><i class="fa-solid fa-circle-info w-6"></i> À propos</a
+            >
+            <a
+              href="#"
+              class="text-black flex items-center gap-3 p-3 rounded-xl hover:bg-black/5 font-medium"
+              ><i class="fa-solid fa-envelope w-6"></i> Contact</a
+            >
+            <a
+              href="#"
+              class="sidebar-item text-black flex items-center gap-3 p-3 rounded-xl hover:bg-black/5 transition font-medium"
+              ><i class="fa-solid fa-circle-question w-6"></i> Aide</a
+            >
+            <a
+              href="#"
+              class="mt-4 text-black flex items-center justify-center gap-2 rounded-xl border border-black hover:border-red-600 hover:text-red-600 py-3 font-bold transition"
+            >
+              <i class="fa-solid fa-power-off"></i> Déconnexion
+            </a>
+          </div>
+        </div>
+      </aside>
+
+      <section class="flex-1 w-full max-w-2xl mx-auto mt-5">
+        <div
+          class="bg-white rounded-3xl lg:rounded-4xl shadow-lg border border-gray-100 p-6 md:p-10"
+        >
+          <div class="flex items-center gap-4 mb-8">
+            <h2
+              class="text-xl md:text-2xl font-bold uppercase tracking-widest text-black"
+            >
+              Profil
+            </h2>
+            <div class="flex-1 h-px bg-gray-200"></div>
+          </div>
+
+          <form class="space-y-6 md:space-y-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div class="space-y-2">
+                <label class="font-bold text-sm ml-1 text-black">Prénom</label>
+                <input
+                  id="firstName"
+                  type="text"
+                  placeholder="Prénom"
+                  class="w-full border border-gray-200 rounded-2xl p-4 focus:border-black outline-none transition"
+                />
+              </div>
+              <div class="space-y-2">
+                <label class="font-bold text-sm ml-1 text-black">Nom</label>
+                <input
+                  id="lastName"
+                  type="text"
+                  placeholder="Nom"
+                  class="w-full border border-gray-200 rounded-2xl p-4 focus:border-black outline-none transition"
+                />
+              </div>
+            </div>
+
+            <div class="space-y-2">
+              <label class="font-bold text-sm ml-1 text-black">Bio</label>
+              <textarea
+                id="bio"
+                rows="4"
+                placeholder="Parlez-nous de vous"
+                class="w-full border border-gray-200 rounded-3xl p-5 focus:border-black outline-none transition resize-none"
+              ></textarea>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div class="space-y-2">
+                <label class="font-bold text-sm ml-1 text-black"
+                  >Localisation</label
+                >
+                <input
+                  id="location"
+                  type="text"
+                  placeholder="Votre localisation"
+                  class="w-full border border-gray-200 rounded-2xl p-4 focus:border-black outline-none transition"
+                />
+              </div>
+              <div class="space-y-2">
+                <label class="font-bold text-sm ml-1 text-black"
+                  >Site web</label
+                >
+                <input
+                  id="website"
+                  type="url"
+                  placeholder="https://..."
+                  class="w-full border border-gray-200 rounded-2xl p-4 focus:border-black outline-none transition"
+                />
+              </div>
+            </div>
+
+            <div class="flex flex-col sm:flex-row justify-end gap-4 pt-4">
+              <button
+                type="submit"
+                class="w-full sm:w-auto bg-black text-white px-10 py-3 rounded-full font-bold order-1 sm:order-2 hover:bg-gray-800 transition"
+              >
+                Sauvegarder
+              </button>
+              <a
+                href="profil.html"
+                id="cancelButton"
+                class="w-full sm:w-auto bg-white text-red-500 border border-red-500 px-10 py-3 rounded-full font-bold order-2 sm:order-1 hover:bg-red-50 transition"
+              >
+                Annuler
+              </a>
+            </div>
+          </form>
+        </div>
+      </section>
+    </main>
+  </body>
+
+  <script src="updateprofil.js" defer></script>
+</html>

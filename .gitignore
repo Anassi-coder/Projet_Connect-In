@@ -1,0 +1,32 @@
+# Node
+node_modules/
+npm-debug.log*
+yarn-error.log
+.pnp/
+.yarn/cache
+
+# Laravel
+connectin-api/.env
+connectin-api/.env.backup
+connectin-api/vendor/
+connectin-api/storage/logs/*.log
+connectin-api/storage/framework/cache/
+connectin-api/storage/framework/sessions/
+connectin-api/storage/framework/views/
+connectin-api/bootstrap/cache/
+connectin-api/.phpunit.result.cache
+
+# Build
+frontend/dist/
+frontend/build/
+
+# OS / IDE
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Docker
+docker/mysql/data/

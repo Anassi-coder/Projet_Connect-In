@@ -1,0 +1,103 @@
+services:
+  # ----------------------------------------
+  # PHP-FPM : fait tourner le backend Laravel
+  # ----------------------------------------
+  app:
+    build:
+      context: . # contexte de build = racine du projet
+      dockerfile: docker/php/Dockerfile # chemin vers notre Dockerfile
+    container_name: connectin_app
+    volumes:
+      - ./connectin-api:/var/www/html # monte le code local dans le container (modifs immédiates sans rebuild)
+    environment:
+      DB_HOST: mysql # override .env → pointe vers le container MySQL au lieu de 127.0.0.1
+      DB_DATABASE: connectin
+      DB_USERNAME: connectin
+      DB_PASSWORD: secret
+    depends_on:
+      mysql:
+        condition: service_healthy # attend que MySQL soit vraiment prêt avant de démarrer
+    networks:
+      - connectin
+
+  # ----------------------------------------
+  # MySQL : la base de données
+  # ----------------------------------------
+  mysql:
+    image: mysql:8.0 # image officielle, pas besoin de Dockerfile
+    container_name: connectin_mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword # mot de passe root MySQL
+      MYSQL_DATABASE: connectin # crée automatiquement cette base au premier démarrage
+      MYSQL_USER: connectin # doit correspondre exactement à DB_USERNAME du service app
+      MYSQL_PASSWORD: secret # doit correspondre exactement à DB_PASSWORD du service app
+    volumes:
+      - mysql_data:/var/lib/mysql # stockage persistant : les données survivent au redémarrage
+    ports:
+      - "3306:3306" # expose MySQL sur ta machine (utile pour TablePlus, DBeaver...)
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"] # vérifie que MySQL répond
+      interval: 10s # vérifie toutes les 10 secondes
+      timeout: 5s # abandon après 5s sans réponse
+      retries: 5 # essaie 5 fois avant de déclarer le service "unhealthy"
+    networks:
+      - connectin
+
+  # ----------------------------------------
+  # Nginx : sert le frontend et proxy l'API
+  # ----------------------------------------
+  nginx:
+    image: nginx:alpine
+    container_name: connectin_nginx
+    ports:
+      - "80:80" # port 80 machine → port 80 container (http://localhost)
+    volumes:
+      - ./connectin-api:/var/www/html # code Laravel accessible à Nginx
+      - ./frontend:/var/www/frontend # fichiers HTML/JS du frontend
+      - ./docker/nginx/nginx.conf:/etc/nginx/conf.d/default.conf # notre config remplace celle par défaut
+    depends_on:
+      - app # attend que PHP-FPM soit démarré
+    networks:
+      - connectin
+
+  # ----------------------------------------
+  # Node : compile Tailwind CSS (optionnel)
+  # Démarrer avec : docker compose --profile dev up
+  # ----------------------------------------
+  node:
+    image: node:20-slim
+    platform: linux/amd64 # force x64 via Rosetta (règle le problème @parcel/watcher sur ARM64)
+    container_name: connectin_node
+    working_dir: /app # dossier de travail dans le container
+    volumes:
+      - ./frontend:/app # monte le frontend dans le container
+      - frontend_node_modules:/app/node_modules # node_modules isolé dans Docker (évite les conflits Mac/Linux)
+    command: sh -c "npm install && npm run dev" # installe les packages puis lance Tailwind en watch
+    profiles:
+      - dev # ce container ne démarre QUE avec --profile dev
+    networks:
+      - connectin
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: connectin_phpmyadmin
+    environment:
+      PMA_HOST: mysql
+      MYSQL_ROOT_PASSWORD: rootpassword
+    ports:
+      - "8082:80"
+    depends_on:
+      - mysql
+    networks:
+      - connectin
+
+# Réseau interne Docker : les containers se parlent entre eux par leur nom (ex: app, mysql, nginx)
+networks:
+  connectin:
+    driver: bridge
+
+# Volume nommé pour MySQL : les données persistent même si le container est supprimé
+# Volume isolé pour node_modules : évite les conflits de binaires entre Mac et Linux
+volumes:
+  mysql_data:
+  frontend_node_modules:

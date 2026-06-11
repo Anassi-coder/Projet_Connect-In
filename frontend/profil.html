@@ -1,0 +1,356 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="src/css/output.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Questrial&display=swap"
+      rel="stylesheet"
+    />
+    <title>Profil</title>
+  </head>
+
+  <body
+    class="antialiased font-['Questrial',sans-serif] bg-white text-white min-h-screen"
+  >
+    <!-- HEADER -->
+    <header
+      class="sticky top-0 z-50 bg-[#0f172a]/80 backdrop-blur-md border-b border-white/10 px-6 py-4"
+    >
+      <div
+        class="max-w-7xl mx-auto flex flex-wrap justify-between items-center"
+      >
+        <div class="flex items-center gap-4">
+          <button
+            id="menu-btn"
+            class="text-[#E2F167] text-2xl lg:hidden focus:outline-none"
+          >
+            <i class="fa-solid fa-bars"></i>
+          </button>
+
+          <a
+            href="#"
+            class="text-xl md:text-2xl font-bold tracking-tighter text-[#E2F167]"
+            >CONNECT'IN</a
+          >
+        </div>
+
+        <!-- <div class="relative flex-1 max-w-md hidden lg:block mx-4">
+          <i
+            class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-white/40"
+          ></i>
+          <input
+            type="text"
+            placeholder="Rechercher un post..."
+            class="w-full bg-white/5 border border-white/10 text-white rounded-full py-2 pl-12 pr-4 focus:outline-none focus:border-[#E2F167] transition"
+          />
+        </div> -->
+
+        <div class="flex items-center gap-4">
+          <!-- <button
+            id="search-trigger"
+            class="text-white/80 lg:hidden focus:outline-none"
+          >
+            <i class="fa-solid fa-magnifying-glass text-xl"></i>
+          </button> -->
+
+          <a
+            href="profil.html"
+            id="userAvatar"
+            class="w-10 h-10 rounded-full bg-[#E2F167] text-slate-900 flex items-center justify-center font-bold"
+          >
+          </a>
+        </div>
+
+        <div
+          id="mobile-search-bar"
+          class="hidden lg:hidden w-full mt-4 relative animate-fadeIn"
+        >
+          <i
+            class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-white/40"
+          ></i>
+          <input
+            type="text"
+            placeholder="Rechercher un post..."
+            class="w-full bg-white/5 border border-white/10 rounded-full text-white py-4 pl-12 pr-4 focus:outline-none focus:border-[#E2F167] transition text-sm"
+          />
+        </div>
+      </div>
+    </header>
+
+    <div class="max-w-7xl mx-auto flex flex-col lg:flex-row gap-25 p-4 md:p-8">
+      <!-- SIDEBAR (MENU LATÉRAL)  -->
+      <aside
+        id="sidebar"
+        class="fixed lg:sticky top-0 lg:top-28 left-0 h-full lg:h-fit w-72 lg:w-64 bg-white lg:bg-transparent z-50 lg:z-0 p-6 lg:p-0 transform -translate-x-full lg:translate-x-0 transition-transform duration-300 ease-in-out shadow-2xl lg:shadow-none overflow-y-auto"
+      >
+        <!-- En-tête du menu mobile -->
+        <div class="flex justify-between items-center lg:hidden mb-8">
+          <span class="font-bold text-2xl text-slate-900">Menu</span>
+          <button id="close-btn" class="text-2xl text-black">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+
+        <div class="flex flex-col gap-6">
+          <!-- Premier bloc de navigation -->
+          <div
+            class="border border-white/10 lg:border-white/10 rounded-3xl p-4 flex flex-col gap-1"
+          >
+            <a
+              href="accueil.html"
+              class="text-black flex items-center gap-3 p-3 rounded-xl hover:bg-black/5 font-medium"
+              ><i class="fa-solid fa-house w-6"></i> Accueil</a
+            >
+            <a
+              href="profil.html"
+              class="text-black flex items-center gap-3 p-3 rounded-xl hover:bg-black/5 font-medium"
+              ><i class="fa-solid fa-user w-6"></i> Profil</a
+            >
+            <!-- <a
+              href="#"
+              class="text-black flex items-center gap-3 p-3 rounded-xl hover:bg-black/5 font-medium"
+              ><i class="fa-solid fa-bell w-6"></i> Notifications</a
+            > -->
+            <a
+              href="delete-account.html"
+              class="text-black flex items-center gap-3 p-3 rounded-xl hover:bg-black/5 font-medium"
+              ><i class="fa-solid fa-gear w-6"></i> Gérer mon compte</a
+            >
+
+            <!-- Bouton pour poster -->
+            <a
+              href="#"
+              id="post-btn"
+              class="mt-4 bg-black text-white text-center font-bold py-3 rounded-xl hover:scale-105 transition-all"
+              >Poster</a
+            >
+          </div>
+
+          <!-- Second bloc de navigation -->
+          <div
+            class="border border-white/10 lg:border-white/10 rounded-3xl p-4 flex flex-col gap-1"
+          >
+            <!-- Liens principaux -->
+            <a
+              href="apropos.html"
+              class="text-black flex items-center gap-3 p-3 rounded-xl hover:bg-black/5 font-medium"
+              ><i class="fa-solid fa-circle-info w-6"></i> À propos</a
+            >
+            <a
+              href="contact.html"
+              class="text-black flex items-center gap-3 p-3 rounded-xl hover:bg-black/5 font-medium"
+              ><i class="fa-solid fa-envelope w-6"></i> Contact</a
+            >
+            <a
+              href="aide.html"
+              class="sidebar-item text-black flex items-center gap-3 p-3 rounded-xl hover:bg-black/5 transition font-medium"
+              ><i class="fa-solid fa-circle-question w-6"></i> Aide</a
+            >
+
+            <!-- Bouton de déconnexion -->
+            <a
+              href="#"
+              class="mt-4 text-black flex items-center justify-center gap-2 rounded-xl border border-black hover:border-red-600 hover:text-red-600 py-3 font-bold transition"
+            >
+              <i class="fa-solid fa-power-off"></i> Déconnexion
+            </a>
+          </div>
+        </div>
+      </aside>
+
+      <div
+        id="overlay"
+        class="fixed inset-0 bg-black/50 z-40 hidden lg:hidden"
+      ></div>
+
+      <!-- ================= MAIN ================= -->
+      <main class="flex-1 flex flex-col gap-6 max-w-2xl w-full">
+        <!-- ================= CARTE PROFIL ================= -->
+        <div
+          class="bg-white border border-slate-200 rounded-3xl md:rounded-4xl p-4 md:p-8"
+        >
+          <div
+            class="flex flex-col md:flex-row gap-6 md:gap-8 items-center md:items-start text-center md:text-left"
+          >
+            <!-- <img
+              src="src/img/joe-shields-dLij9K4ObYY-unsplash.jpg"
+              class="w-32 h-44 md:w-40 md:h-52 bg-slate-200 rounded-3xl border border-black shadow-inner object-cover shrink-0"
+            /> -->
+
+            <div class="flex-1 flex flex-col gap-4 w-full">
+              <div>
+                <h2 id="profileName" class="text-2xl md:text-3xl text-black">
+                  John Doe
+                </h2>
+                <p
+                  class="text-black bg-slate-100 w-fit px-3 py-1 rounded-lg mt-1 mx-auto md:mx-0"
+                >
+                  Développeur Fullstack
+                </p>
+              </div>
+
+              <div class="bg-slate-50 border border-slate-100 p-4 rounded-2xl">
+                <h3
+                  class="text-xs font-bold text-black uppercase tracking-widest mb-1"
+                >
+                  Description
+                </h3>
+                <p id="profileBio" class="text-slate-600 text-sm md:text-base">
+                  Passionné par le code et l'architecture système.
+                </p>
+              </div>
+
+              <div class="flex flex-wrap justify-center md:justify-start gap-3">
+                <a
+                  id="profileWebsite"
+                  href="#"
+                  class="flex items-center gap-2 px-4 py-2 bg-slate-100 rounded-xl text-xs md:text-sm text-black border border-slate-200 hover:bg-slate-200"
+                >
+                  <i class="fa-solid fa-link"></i> Site web
+                </a>
+
+                <a
+                  id="profileLocation"
+                  href="#"
+                  class="flex items-center gap-2 px-4 py-2 bg-slate-100 rounded-xl text-xs md:text-sm text-black border border-slate-200 hover:bg-slate-200"
+                >
+                  <i class="fa-solid fa-location-dot"></i> Lille, France
+                </a>
+
+                <a
+                  href="updateprofil.html"
+                  class="bg-black text-white px-6 py-2 text-center rounded-full w-auto md:w-auto"
+                >
+                  Gérer le profil
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Onglets -->
+          <div
+            class="flex gap-4 md:gap-12 mt-8 md:mt-12 border-t border-slate-100 pt-6 overflow-x-auto no-scrollbar"
+          >
+            <a
+              href="#"
+              id="tab-posts"
+              class="text-sm md:text-lg text-slate-800 border-b-4 border-[#E2F167] pb-2 uppercase tracking-tight whitespace-nowrap"
+            >
+              Mes Posts
+            </a>
+
+            <a
+              href="#"
+              id="tab-comments"
+              class="text-sm md:text-lg text-slate-400 hover:text-slate-600 pb-2 uppercase tracking-tight transition whitespace-nowrap"
+            >
+              Commentaires
+            </a>
+
+            <a
+              href="#"
+              id="tab-likes"
+              class="text-sm md:text-lg text-slate-400 hover:text-slate-600 pb-2 uppercase tracking-tight transition whitespace-nowrap"
+            >
+              Likes
+            </a>
+          </div>
+        </div>
+
+        <!-- CONTENU DYNAMIQUE -->
+        <div id="postsContainer" class="flex flex-col gap-6"></div>
+      </main>
+    </div>
+
+    <!-- EDIT MODAL -->
+    <!-- MODAL EDIT POST -->
+    <div
+      id="editModal"
+      class="fixed inset-0 bg-black/40 hidden items-center justify-center z-50"
+    >
+      <div class="bg-white w-full max-w-lg rounded-2xl p-6 relative">
+        <h2 id="editModalTitle" class="text-lg font-semibold mb-4 text-black">
+          Modifier le post
+        </h2>
+
+        <textarea
+          id="editContentInput"
+          class="w-full border border-slate-300 rounded-xl p-4 h-32 resize-none focus:outline-none focus:ring-2 focus:ring-black text-black"
+        ></textarea>
+
+        <!-- IMAGE ACTUELLE -->
+        <div id="currentImageContainer" class="mt-3 hidden">
+          <p class="text-sm text-slate-600 mb-1">Image actuelle</p>
+          <img id="currentPostImage" class="rounded-xl max-h-48 object-cover" />
+        </div>
+
+        <!-- MODIFIER IMAGE -->
+        <div class="mt-4">
+          <p class="text-sm font-semibold text-black mb-2">Modifier l'image</p>
+
+          <label
+            for="editImageInput"
+            class="cursor-pointer inline-flex items-center gap-2 bg-slate-100 hover:bg-slate-200 text-black px-4 py-2 rounded-lg text-sm font-medium transition"
+          >
+            <i class="fa-solid fa-image"></i>
+            Choisir une image
+          </label>
+
+          <input
+            type="file"
+            id="editImageInput"
+            accept="image/*"
+            class="hidden"
+          />
+
+          <p id="editImageName" class="text-xs text-gray-500 mt-2"></p>
+
+          <div class="flex items-center gap-2 mt-3">
+            <input
+              type="checkbox"
+              id="removeImageCheckbox"
+              class="w-4 h-4 accent-red-500"
+            />
+
+            <label
+              for="removeImageCheckbox"
+              class="text-sm text-red-500 font-medium cursor-pointer"
+            >
+              Supprimer l'image
+            </label>
+          </div>
+        </div>
+
+        <div class="flex justify-end gap-3 mt-6">
+          <button
+            id="cancelEditBtn"
+            class="px-4 py-2 rounded-lg border border-red-600 text-red-600 hover:bg-red-50 transition"
+          >
+            Annuler
+          </button>
+
+          <button
+            id="saveEditBtn"
+            class="px-4 py-2 rounded-lg bg-black text-white hover:bg-gray-800 transition"
+          >
+            Enregistrer
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Fichier JavaScript (gestion menu mobile etc.) -->
+    <script src="profil.js"></script>
+    <script src="post.js"></script>
+    <script src="timeAgo.js"></script>
+    <script src="accueil.js"></script>
+  </body>
+</html>

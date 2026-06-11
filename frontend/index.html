@@ -1,0 +1,275 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="src/css/output.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Questrial&display=swap"
+      rel="stylesheet"
+    />
+    <title>Connect'In | Accueil</title>
+  </head>
+
+  <body class="antialiased font-['Questrial',sans-serif]">
+    <section
+      class="relative min-h-screen w-full flex flex-col justify-center px-10 md:px-20 bg-[url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070')] bg-cover bg-center bg-no-repeat"
+    >
+      <div class="absolute inset-0 bg-black/50"></div>
+      <div
+        class="hidden lg:block"
+        style="position: fixed; top: 24px; left: 32px; z-index: 9999"
+      >
+        <img
+          src="src/img/logo.png"
+          alt="Connect'In Logo"
+          style="height: 15vh; width: auto"
+        />
+      </div>
+
+      <div class="relative z-10 max-w-4xl">
+        <h1
+          class="text-white text-6xl md:text-8xl font-bold leading-tight mb-8"
+        >
+          Prêt <br />
+          à interagir ?
+        </h1>
+
+        <div class="w-full h-px bg-white/30 mb-12"></div>
+
+        <div
+          class="flex flex-col md:flex-row md:items-end justify-between gap-8"
+        >
+          <p class="text-white text-xl md:text-2xl max-w-md leading-relaxed">
+            L'espace privilégié pour échanger, partager vos succès et renforcer
+            les liens avec vos collègues de bureau.
+          </p>
+
+          <button
+            id="openLogin"
+            class="group flex items-center gap-4 bg-[#E2F167] rounded-full pl-8 pr-2 py-2 hover:scale-105 transition-all duration-300 w-fit"
+          >
+            <span class="text-slate-900 font-bold uppercase tracking-tight"
+              >Connexion</span
+            >
+            <div
+              class="w-10 h-10 bg-white rounded-full flex items-center justify-center text-slate-900 group-hover:translate-x-1 transition-transform"
+            >
+              <i class="fa-solid fa-arrow-right"></i>
+            </div>
+          </button>
+
+          <button
+            id="openRegister"
+            class="group flex items-center gap-4 bg-white/10 backdrop-blur-sm hover:bg-white/20 rounded-full pl-8 pr-2 py-2 hover:scale-105 transition-all duration-300 w-fit"
+          >
+            <span class="text-white font-bold uppercase tracking-tight"
+              >S'inscrire</span
+            >
+            <div
+              class="w-10 h-10 bg-white rounded-full flex items-center justify-center text-slate-900 group-hover:translate-x-1 transition-transform"
+            >
+              <i class="fa-solid fa-user-plus"></i>
+            </div>
+          </button>
+        </div>
+      </div>
+
+      <footer
+        class="absolute bottom-10 left-0 w-full z-10 px-10 md:px-20 flex justify-between items-center text-white/70"
+      >
+        <p class="text-sm font-medium uppercase tracking-widest">
+          Connect'In © 2026
+        </p>
+      </footer>
+    </section>
+  </body>
+  <div
+    id="registerModal"
+    class="fixed inset-0 z-100 hidden items-center justify-center bg-black/60 backdrop-blur-md p-4"
+  >
+    <div
+      class="bg-slate-900 border border-white/10 w-full max-w-md rounded-3xl shadow-2xl relative p-8"
+    >
+      <button
+        id="closeRegister"
+        class="absolute top-6 right-6 text-white/50 hover:text-white text-2xl"
+      >
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+
+      <h2 class="text-3xl text-center font-bold text-white mb-2">
+        REJOIGNEZ-NOUS
+      </h2>
+
+      <form id="registerForm" class="space-y-5">
+        <!-- Username -->
+        <div>
+          <label
+            class="block text-xs font-bold text-white uppercase tracking-widest mb-2"
+          >
+            Nom d'utilisateur
+          </label>
+          <input
+            type="text"
+            name="username"
+            placeholder="jdupont"
+            class="w-full bg-white/5 border border-white/10 text-white px-4 py-3 rounded-xl focus:ring-2 focus:ring-[#E2F167] focus:border-transparent outline-none transition"
+            required
+          />
+        </div>
+
+        <!-- Prénom -->
+        <div>
+          <label
+            class="block text-xs font-bold text-white uppercase tracking-widest mb-2"
+          >
+            Prénom
+          </label>
+          <input
+            type="text"
+            name="first_name"
+            placeholder="Jean"
+            class="w-full bg-white/5 border border-white/10 text-white px-4 py-3 rounded-xl focus:ring-2 focus:ring-[#E2F167] focus:border-transparent outline-none transition"
+            required
+          />
+        </div>
+
+        <!-- Nom -->
+        <div>
+          <label
+            class="block text-xs font-bold text-white uppercase tracking-widest mb-2"
+          >
+            Nom
+          </label>
+          <input
+            type="text"
+            name="last_name"
+            placeholder="Dupont"
+            class="w-full bg-white/5 border border-white/10 text-white px-4 py-3 rounded-xl focus:ring-2 focus:ring-[#E2F167] focus:border-transparent outline-none transition"
+            required
+          />
+        </div>
+
+        <!-- Email -->
+        <div>
+          <label
+            class="block text-xs font-bold text-white uppercase tracking-widest mb-2"
+          >
+            Email professionnel
+          </label>
+          <input
+            type="email"
+            name="email"
+            placeholder="jean@entreprise.com"
+            class="w-full bg-white/5 border border-white/10 text-white px-4 py-3 rounded-xl focus:ring-2 focus:ring-[#E2F167] focus:border-transparent outline-none transition"
+            required
+          />
+        </div>
+
+        <!-- Mot de passe -->
+        <div>
+          <label
+            class="block text-xs font-bold text-white uppercase tracking-widest mb-2"
+          >
+            Mot de passe
+          </label>
+          <input
+            type="password"
+            name="password"
+            placeholder="••••••••"
+            class="w-full bg-white/5 border border-white/10 text-white px-4 py-3 rounded-xl focus:ring-2 focus:ring-[#E2F167] focus:border-transparent outline-none transition"
+            required
+          />
+        </div>
+
+        <!-- Confirmation mot de passe -->
+        <div>
+          <label
+            class="block text-xs font-bold text-white uppercase tracking-widest mb-2"
+          >
+            Confirmer le mot de passe
+          </label>
+          <input
+            type="password"
+            name="password_confirmation"
+            placeholder="••••••••"
+            class="w-full bg-white/5 border border-white/10 text-white px-4 py-3 rounded-xl focus:ring-2 focus:ring-[#E2F167] focus:border-transparent outline-none transition"
+            required
+          />
+        </div>
+
+        <!-- Bouton -->
+        <button
+          type="submit"
+          class="w-full bg-[#E2F167] hover:bg-[#d4e24d] text-slate-900 font-bold py-4 rounded-xl shadow-lg transition duration-300 mt-4 uppercase tracking-tighter"
+        >
+          Créer mon compte
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <div
+    id="loginModal"
+    class="fixed inset-0 z-100 hidden items-center justify-center bg-black/60 backdrop-blur-md p-4"
+  >
+    <div
+      class="bg-slate-900 border border-white/10 w-full max-w-md rounded-3xl shadow-2xl relative p-8"
+    >
+      <button
+        id="closeLogin"
+        class="absolute top-6 right-6 text-white/50 hover:text-white text-2xl"
+      >
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+
+      <h2 class="text-3xl text-center font-bold text-white mb-2">
+        BON RETOUR !
+      </h2>
+
+      <form id="loginForm" class="space-y-5">
+        <div>
+          <label
+            class="block text-xs font-bold text-white uppercase tracking-widest mb-2"
+            >Email</label
+          >
+          <input
+            type="email"
+            placeholder="votre@email.com"
+            class="w-full bg-white/5 border border-white/10 text-white px-4 py-3 rounded-xl focus:ring-2 focus:ring-[#E2F167] focus:border-transparent outline-none transition"
+          />
+        </div>
+
+        <div>
+          <div class="flex justify-between mb-2">
+            <label
+              class="text-xs font-bold text-white uppercase tracking-widest"
+              >Mot de passe</label
+            >
+          </div>
+          <input
+            type="password"
+            placeholder="••••••••"
+            class="w-full bg-white/5 border border-white/10 text-white px-4 py-3 rounded-xl focus:ring-2 focus:ring-[#E2F167] focus:border-transparent outline-none transition"
+          />
+        </div>
+
+        <button
+          type="submit"
+          class="w-full bg-[#E2F167] hover:bg-[#d4e24d] text-slate-900 font-bold py-4 rounded-xl shadow-lg transition duration-300 mt-4 uppercase tracking-tighter"
+        >
+          Se connecter
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</html>
